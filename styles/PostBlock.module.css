@@ -1,0 +1,42 @@
+.card-img-overlay {
+  z-index: 2;
+}
+
+.graident:before {
+  content: '';
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.353));
+  z-index: 1;
+  border-radius: 0.7rem;
+}
+
+.card-overlay-post .nav-item,
+.card-overlay-post .nav-item a {
+  color: white;
+}
+
+.card-overlay-post .nav-item {
+  margin-right: 10px;
+}
+
+.z5 {
+  z-index: 5;
+}
+
+.avatar img {
+  height: 2.1875rem;
+  width: 2.1875rem;
+}
+
+.card_img_div {
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 25px;
+}

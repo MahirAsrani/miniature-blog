@@ -14,3 +14,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.post-card > .card-img-top {
+  height: 150px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
