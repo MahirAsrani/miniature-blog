@@ -11,11 +11,11 @@ import DashSidebar from '../../../../components/DashSidebar';
 import Link from 'next/link';
 
 const EditPost = ({ post, categ }) => {
-  const [title, setTitle] = useState(post.title);
+  const [title, setTitle] = useState(post?.title);
   const [image, setImage] = useState('');
-  const [category, setCategory] = useState(post.category._id);
-  const [description, setDescription] = useState(post.description);
-  const [content, setContent] = useState(post.content);
+  const [category, setCategory] = useState(post?.category?._id);
+  const [description, setDescription] = useState(post?.description);
+  const [content, setContent] = useState(post?.content);
 
   const ReactQuill =
     typeof window === 'object' ? require('react-quill') : () => false;
@@ -196,7 +196,7 @@ const EditPost = ({ post, categ }) => {
 export default EditPost;
 
 export async function getServerSideProps({ params }) {
-  const res = await axios.get(`${GET_POST_BY_ID}/${params.id}`, {
+  const res = await axios.get(`${GET_POST_BY_ID}?id=${params.id}`, {
     withCredentials: true,
   });
 

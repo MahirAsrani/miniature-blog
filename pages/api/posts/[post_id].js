@@ -13,12 +13,19 @@ export const config = {
 
 const postHandler = async (req, res) => {
   if (req.method === 'GET') {
-    const { post_id } = req.query;
+    let data = [];
 
-    const data = await Post.findById(post_id).populate([
-      { path: 'author', select: 'name' },
-      { path: 'category' },
-    ]);
+    if (req.query.id) {
+      data = await Post.findById(req.query.id).populate([
+        { path: 'author', select: 'name' },
+        { path: 'category' },
+      ]);
+    } else {
+      data = await Post.findOne({ slug: req.query.post_id }).populate([
+        { path: 'author', select: 'name' },
+        { path: 'category' },
+      ]);
+    }
 
     return res.status(200).json({
       success: true,
@@ -39,13 +46,13 @@ const postHandler = async (req, res) => {
         const UpdatedPost = await Post.findById(post_id);
 
         const { title, category, description, content } = fields;
+        const slug = title.toLowerCase().replaceAll(' ', '-').trim();
 
         UpdatedPost.title = title;
+        UpdatedPost.slug = slug;
         UpdatedPost.category = category;
         UpdatedPost.description = description;
         UpdatedPost.content = content;
-
-        console.log(UpdatedPost);
 
         if (files?.image) {
           const image = await saveFile(files, UpdatedPost._id);

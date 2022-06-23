@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { GET_POSTS } from '../../utils/constants';
 
 const singlePost = ({ post }) => {
-  const date = new Date(post.createdAt).toDateString();
-
+  const date = new Date(post?.createdAt).toDateString();
+  if (!post) return <></>;
   return (
     <div className="container my-5">
       <div className="row">
@@ -66,16 +66,16 @@ export async function getStaticPaths() {
 
   return {
     paths: data.map((post) => ({
-      params: { id: post._id },
+      params: { category: post.category.slug, post_slug: post.slug },
     })),
     fallback: true,
   };
 }
 
 export async function getStaticProps({ params }) {
-  const { id } = params;
+  const { post_slug } = params;
 
-  const res = await axios.get(`${GET_POSTS}/${id}`);
+  const res = await axios.get(`${GET_POSTS}/${post_slug}`);
   const data = res.data.data;
 
   // Pass data to the page via props

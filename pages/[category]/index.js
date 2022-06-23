@@ -1,8 +1,6 @@
 import axios from 'axios';
-import { useContext, useState } from 'react';
-import PostBlock from '../components/PostBlock';
-import { AppContext } from '../context/state';
-import { GET_POSTS } from '../utils/constants';
+import PostBlock from '../../components/PostBlock';
+import { GET_POST_BY_CATEGORY } from '../../utils/constants';
 
 const Index = ({ posts }) => {
   return (
@@ -14,7 +12,6 @@ const Index = ({ posts }) => {
               key={p._id}
               id={p._id}
               title={p.title}
-              slug={p.slug}
               featureImg={p.featureImage}
               content={p.description}
               author={p.author.name}
@@ -29,11 +26,10 @@ const Index = ({ posts }) => {
   );
 };
 
-export async function getServerSideProps() {
-  const res = await axios.get(GET_POSTS);
+export async function getServerSideProps({ params }) {
+  const res = await axios.get(`${GET_POST_BY_CATEGORY}/${params.category}`);
   const data = res.data.data;
 
-  // Pass data to the page via props
   return { props: { posts: data } };
 }
 

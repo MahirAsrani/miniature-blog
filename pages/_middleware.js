@@ -4,9 +4,11 @@ import { NextResponse } from 'next/server';
 export async function middleware(req) {
   const URL = req.url;
 
-  const protectedRoutes = ['/addnew', '/dashboard'];
+  const protectedRoutes = [`${process.env.baseURL}/dashboard`];
 
   const check = protectedRoutes.some((val) => URL.includes(val));
+
+  // console.log(URL);
 
   if (check) {
     try {

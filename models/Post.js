@@ -8,9 +8,13 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
-
+    slug: {
+      type: String,
+      required: true,
+      trim: true,
+      unique: true,
+    },
     featureImage: String,
-
     category: { type: 'ObjectId', ref: Category },
     description: {
       type: String,

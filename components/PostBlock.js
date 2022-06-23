@@ -5,11 +5,13 @@ import styles from '../styles/PostBlock.module.css';
 const PostBlock = ({
   id,
   title,
+  slug,
   featureImg,
   content,
   author,
   postedDate,
   category,
+  categorySlug,
 }) => {
   const date = new Date(postedDate).toDateString();
 
@@ -26,7 +28,7 @@ const PostBlock = ({
           className={`card-img-overlay d-flex align-items-start flex-column p-3 ${styles.graident}`}
         >
           <div className={`w-100 mt-auto ${styles.z5}`}>
-            <a href="#" className="badge bg-warning mb-2">
+            <a href={`/${categorySlug}`} className="badge bg-warning mb-2">
               <i className="fas fa-circle me-2 small fw-bold"></i>
               {category}
             </a>
@@ -35,7 +37,10 @@ const PostBlock = ({
       </div>
       <div className="card-body px-0 py-3">
         <h4 className="card-title">
-          <Link href={`/posts/${id}`} className="btn-link text-reset fw-bold">
+          <Link
+            href={`/${categorySlug}/${slug}`}
+            className="btn-link text-reset fw-bold"
+          >
             {title}
           </Link>
         </h4>

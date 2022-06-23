@@ -4,8 +4,10 @@ export const baseURL = process.env.baseURL;
 // BLOGS
 export const GET_POSTS = `${baseURL}/api/posts`;
 export const GET_MY_POSTS = `${baseURL}/api/posts/my`;
-export const GET_POST_BY_ID = `${baseURL}/api/posts`;
+export const GET_POST_BY_ID = `${baseURL}/api/posts/id`;
 export const POST_POST = `${baseURL}/api/posts`;
+
+export const GET_POST_BY_CATEGORY = `${baseURL}/api/posts/category`;
 
 // Auth
 export const POST_AUTH = `${baseURL}/api/auth`;
