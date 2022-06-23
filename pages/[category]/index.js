@@ -12,6 +12,7 @@ const Index = ({ posts }) => {
               key={p._id}
               id={p._id}
               title={p.title}
+              slug={p.slug}
               featureImg={p.featureImage}
               content={p.description}
               author={p.author.name}

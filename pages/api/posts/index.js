@@ -4,6 +4,7 @@ import Post from '../../../models/Post';
 import * as jose from 'jose';
 import formidable from 'formidable';
 import fs from 'fs';
+import slugify from '../../../utils/slugify';
 
 dbConnect();
 
@@ -50,8 +51,10 @@ export default async (req, res) => {
       form.parse(req, async (err, fields, files) => {
         if (err) throw err;
         const { title, category, description, content } = fields;
+        const slug = slugify(title);
 
         const newPost = await new Post({
+          slug,
           title,
           category,
           description,

@@ -78,6 +78,8 @@ export async function getStaticProps({ params }) {
   const res = await axios.get(`${GET_POSTS}/${post_slug}`);
   const data = res.data.data;
 
+  console.log(`${GET_POSTS}/${post_slug}`);
+
   // Pass data to the page via props
   return { props: { post: data }, revalidate: 60 };
 }

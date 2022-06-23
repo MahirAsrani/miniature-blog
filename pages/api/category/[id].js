@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 
 import Category from '../../../models/Category';
+import slugify from '../../../utils/slugify';
 
 // dbConnect();
 
@@ -10,7 +11,7 @@ export default async (req, res) => {
       const { title } = req.body;
       const { id } = req.query;
 
-      const slug = title.toLowerCase().replaceAll(' ', '-').trim();
+      const slug = slugify(title);
 
       const doc = await Category.findById(id);
       doc.title = title;

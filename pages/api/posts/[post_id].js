@@ -2,6 +2,7 @@ import dbConnect from '../../../utils/dbConnect';
 import Post from '../../../models/Post';
 import { saveFile } from '.';
 import formidable from 'formidable';
+import slugify from '../../../utils/slugify';
 
 dbConnect();
 
@@ -46,7 +47,8 @@ const postHandler = async (req, res) => {
         const UpdatedPost = await Post.findById(post_id);
 
         const { title, category, description, content } = fields;
-        const slug = title.toLowerCase().replaceAll(' ', '-').trim();
+
+        const slug = slugify(title);
 
         UpdatedPost.title = title;
         UpdatedPost.slug = slug;
