@@ -12,7 +12,7 @@ const postHandler = async (req, res) => {
       );
 
       const data = await Post.find({ author: jwt.payload._id }).populate([
-        { path: 'author', select: 'name' },
+        { path: 'author', select: 'name image' },
         { path: 'category' },
       ]);
 

@@ -40,3 +40,8 @@
   background-size: cover;
   border-radius: 25px;
 }
+
+.card_body {
+  min-height: 180px;
+  margin-bottom: 30px;
+}

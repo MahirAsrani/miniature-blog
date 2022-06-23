@@ -22,7 +22,7 @@ const singlePost = ({ post }) => {
                   <div>
                     <img
                       className="avatar-img rounded-circle"
-                      src="https://blogzine.webestica.com/assets/images/avatar/03.jpg"
+                      src={post.author.image || '/uploads/profile/no_image.jpg'}
                       width={'45px'}
                       alt="avatar"
                     />

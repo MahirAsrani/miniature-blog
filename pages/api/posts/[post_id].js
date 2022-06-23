@@ -23,7 +23,7 @@ const postHandler = async (req, res) => {
       ]);
     } else {
       data = await Post.findOne({ slug: req.query.post_id }).populate([
-        { path: 'author', select: 'name' },
+        { path: 'author', select: 'name image' },
         { path: 'category' },
       ]);
     }

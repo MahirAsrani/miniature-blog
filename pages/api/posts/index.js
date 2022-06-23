@@ -24,10 +24,12 @@ export const config = {
 
 export default async (req, res) => {
   if (req.method === 'GET') {
-    const data = await Post.find({}).populate([
-      { path: 'author', select: 'name' },
-      { path: 'category' },
-    ]);
+    const data = await Post.find({})
+      .populate([
+        { path: 'author', select: 'name image' },
+        { path: 'category' },
+      ])
+      .sort({ createdAt: 'desc' });
 
     return res.status(200).json({
       success: true,

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Router from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
@@ -95,6 +96,7 @@ const EditPost = ({ post, categ }) => {
                     src={post.featureImage}
                     className="img-fluid mx-auto d-flex mb-3"
                     width={'650px'}
+                    alt="feature image"
                   />
 
                   <form onSubmit={handlePostSubmit}>

@@ -14,6 +14,10 @@ export const POST_AUTH = `${baseURL}/api/auth`;
 export const GET_AUTH = `${baseURL}/api/auth`;
 export const GET_LOGOUT = `${baseURL}/api/logout`;
 
+// Profile
+export const GET_PROFILE = `${baseURL}/api/profile`;
+export const POST_PROFILE = `${baseURL}/api/profile`;
+
 // Category
 export const GET_CAT = `${baseURL}/api/category`;
 export const POST_CAT = `${baseURL}/api/category`;

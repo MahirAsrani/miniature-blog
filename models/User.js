@@ -18,6 +18,9 @@ const userSchema = new Schema({
   name: {
     type: String,
   },
+  image: {
+    type: String,
+  },
 });
 
 module.exports = models.User || model('User', userSchema);

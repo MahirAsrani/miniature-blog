@@ -15,7 +15,7 @@ const Index = ({ posts }) => {
               slug={p.slug}
               featureImg={p.featureImage}
               content={p.description}
-              author={p.author.name}
+              author={p.author}
               postedDate={p.createdAt}
               category={p.category.title}
               categorySlug={p.category.slug}

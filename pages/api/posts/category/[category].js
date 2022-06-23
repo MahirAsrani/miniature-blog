@@ -4,7 +4,7 @@ import Post from '../../../../models/Post';
 export default async (req, res) => {
   if (req.method === 'GET') {
     let data = await Post.find({}).populate([
-      { path: 'author', select: 'name' },
+      { path: 'author', select: 'name image' },
       { path: 'category' },
     ]);
 

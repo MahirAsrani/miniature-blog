@@ -35,7 +35,7 @@ const PostBlock = ({
           </div>
         </div>
       </div>
-      <div className="card-body px-0 py-3">
+      <div className={`${styles.card_body} px-0 py-3`}>
         <h4 className="card-title">
           <Link
             href={`/${categorySlug}/${slug}`}
@@ -47,28 +47,29 @@ const PostBlock = ({
         <p className="card-text">
           {content.length > 30 ? content.substring(0, 100) + '...' : content}
         </p>
-      </div>
-      <ul className="nav align-items-center d-flex">
-        <li className="nav-item">
-          <div className="nav-link ps-0">
-            <div className="d-flex align-items-center position-relative">
-              <div className={styles.avatar}>
-                <img
-                  className="avatar-img rounded-circle"
-                  src="https://blogzine.webestica.com/assets/images/avatar/03.jpg"
-                  alt="avatar"
-                />
+
+        <ul className="nav align-items-center d-flex">
+          <li className="nav-item">
+            <div className="nav-link ps-0">
+              <div className="d-flex align-items-center position-relative">
+                <div className={styles.avatar}>
+                  <img
+                    className="avatar-img rounded-circle"
+                    src={author.image || '/uploads/profile/no_image.jpg'}
+                    alt="avatar"
+                  />
+                </div>
+                <span className="ms-2">
+                  <Link href="#" className="stretched-link text-reset btn-link">
+                    <>by {author.name}</>
+                  </Link>
+                </span>
               </div>
-              <span className="ms-2">
-                <Link href="#" className="stretched-link text-reset btn-link">
-                  <>by {author}</>
-                </Link>
-              </span>
             </div>
-          </div>
-        </li>
-        <li className="nav-item">{date}</li>
-      </ul>
+          </li>
+          <li className="nav-item">{date}</li>
+        </ul>
+      </div>
     </div>
   );
 };
