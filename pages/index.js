@@ -4,7 +4,7 @@ import PostBlock from '../components/PostBlock';
 import { AppContext } from '../context/state';
 import { GET_POSTS } from '../utils/constants';
 
-const Index = ({ posts }) => {
+const Index = ({ posts = [] }) => {
   return (
     <div className="container py-5">
       <div className="row">

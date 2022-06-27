@@ -11,7 +11,7 @@ const DashSidebar = () => {
         <div className="col-lg-12">
           <div
             className={`${style.navSide} ${
-              router.pathname.includes('category') && style.navSideActive
+              router?.pathname?.includes('category') && style.navSideActive
             } shadow p-3 my-3 bg-white rounded`}
           >
             <div className="row">
@@ -30,7 +30,7 @@ const DashSidebar = () => {
         <div className="col-lg-12">
           <div
             className={`${style.navSide} ${
-              router.pathname.includes('post') && style.navSideActive
+              router?.pathname?.includes('post') && style.navSideActive
             } shadow p-3 my-3 bg-white rounded`}
           >
             <div className="row">
@@ -49,7 +49,7 @@ const DashSidebar = () => {
         <div className="col-lg-12">
           <div
             className={`${style.navSide} ${
-              router.pathname.includes('profile') && style.navSideActive
+              router?.pathname?.includes('profile') && style.navSideActive
             } shadow p-3 my-3 bg-white rounded`}
           >
             <div className="row">

@@ -18,6 +18,8 @@ const EditPost = ({ post, categ }) => {
   const [description, setDescription] = useState(post?.description);
   const [content, setContent] = useState(post?.content);
 
+  const [alertMsg, setAlertMsg] = useState({});
+
   const ReactQuill =
     typeof window === 'object' ? require('react-quill') : () => false;
 
@@ -64,13 +66,13 @@ const EditPost = ({ post, categ }) => {
     body.append('content', content);
     body.append('description', description);
 
-    const res = await axios.post(`${POST_POST}/${post._id}`, body, {
+    const { data } = await axios.post(`${POST_POST}/${post._id}`, body, {
       withCredentials: true,
     });
+    const { success, message } = data;
 
-    if (res.data.success) {
-      alert('Updated');
-    }
+    success && setAlertMsg({ type: 'alert-primary', message: message });
+    !success && setAlertMsg({ type: 'alert-danger', message: message });
   }
 
   return (
@@ -182,6 +184,15 @@ const EditPost = ({ post, categ }) => {
                         >
                           Update Post
                         </button>
+
+                        {alertMsg.message && (
+                          <div
+                            className={`alert ${alertMsg.type} mt-4`}
+                            role="alert"
+                          >
+                            {alertMsg.message}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </form>

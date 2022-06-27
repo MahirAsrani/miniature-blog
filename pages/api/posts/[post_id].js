@@ -56,6 +56,14 @@ const postHandler = async (req, res) => {
         UpdatedPost.description = description;
         UpdatedPost.content = content;
 
+        const checkSlug = await Post.findOne({ slug: slug });
+        if (checkSlug) {
+          return res.status(200).json({
+            success: false,
+            message: 'Title already in use, please change the title',
+          });
+        }
+
         if (files?.image) {
           const image = await saveFile(files, UpdatedPost._id);
           UpdatedPost.featureImage = image;

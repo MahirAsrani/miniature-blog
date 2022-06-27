@@ -14,35 +14,43 @@ const index = ({ posts }) => {
               <div className="col-12 d-flex align-items-center">
                 <h3 className="m-0 mx-2 me-5">My Posts</h3>
                 <Link href={'/dashboard/post/new'}>
-                  <div className="btn btn-primary">Add New</div>
+                  <div className="btn btn-primary" data-testid="addnew">
+                    Add New
+                  </div>
                 </Link>
               </div>
             </div>
             <div className="row mt-3">
               {posts.map((p) => (
-                <div className="col-md-4 my-2" key={p._id}>
+                <div className="col-md-4 my-2" key={p._id} data-testid="post">
                   <div className="post-card card mb-3">
                     <div
+                      data-testid="image"
                       className="card-img-top"
                       style={{
                         backgroundImage: `url(${
-                          p.featureImage || '../uploads/No_Image.png'
+                          p.featureImage || '/uploads/No_Image.png'
                         })`,
                       }}
                     ></div>
                     <div className="card-body">
-                      <span className="badge bg-warning text-dark mb-3">
+                      <span
+                        className="badge bg-warning text-dark mb-3"
+                        data-testid="titleCategory"
+                      >
                         {p.category.title}
                       </span>
 
-                      <h5 className="card-title">{p.title}</h5>
+                      <h5 className="card-title" data-testid="maintitle">
+                        {p.title}
+                      </h5>
 
                       <Link href={`/dashboard/post/edit/${p._id}`}>
-                        Edit Post
+                        <a data-testid="editlink">Edit Post</a>
                       </Link>
 
                       <p className="card-text">
-                        <small className="text-muted">
+                        <small className="text-muted" data-testid="date">
                           {new Date(p.createdAt).toDateString()}
                         </small>
                       </p>

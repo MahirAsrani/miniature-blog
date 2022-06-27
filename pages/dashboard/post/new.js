@@ -17,8 +17,12 @@ const Addnew = ({ categ }) => {
   const [description, setDescription] = useState('');
   const [content, setContent] = useState('');
 
-  const ReactQuill =
-    typeof window === 'object' ? require('react-quill') : () => false;
+  const [alertMsg, setAlertMsg] = useState({});
+
+  // const ReactQuill =
+  //   typeof window === 'object' ? require('react-quill') : () => false;
+
+  const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
   const modules = {
     toolbar: [
@@ -66,17 +70,21 @@ const Addnew = ({ categ }) => {
     body.append('content', content);
     body.append('description', description);
 
-    const res = await axios.post(POST_POST, body, {
+    const { data } = await axios.post(POST_POST, body, {
       withCredentials: true,
     });
 
-    if (res.data.success) {
+    const { success, message } = data;
+
+    if (success) {
       setTitle('');
       setImage('');
       setDescription('');
       setContent('');
-      alert('Posted');
+      setAlertMsg({ type: 'alert-primary', message: message });
     }
+
+    !success && setAlertMsg({ type: 'alert-danger', message: message });
   }
 
   return (
@@ -104,6 +112,7 @@ const Addnew = ({ categ }) => {
                         <label className="form-label">Post Title </label>
                         <input
                           type="text"
+                          data-testid="title"
                           className="form-control"
                           placeholder="Enter post title"
                           onChange={(e) => setTitle(e.target.value)}
@@ -120,6 +129,7 @@ const Addnew = ({ categ }) => {
 
                           <input
                             className="form-control"
+                            data-testid="image"
                             type="file"
                             id="formFile"
                             onChange={(e) => setImage(e.target.files[0])}
@@ -131,6 +141,7 @@ const Addnew = ({ categ }) => {
                           <label className="form-label">Category</label>
                           <select
                             className="form-select"
+                            data-testid="drop"
                             aria-label="Default select example"
                             onChange={(e) => setCategory(e.target.value)}
                             defaultValue={categ[0]._id}
@@ -148,6 +159,7 @@ const Addnew = ({ categ }) => {
 
                         <textarea
                           type="text"
+                          data-testid="desc"
                           className="form-control"
                           placeholder="Enter short title"
                           onChange={(e) => setDescription(e.target.value)}
@@ -168,13 +180,24 @@ const Addnew = ({ categ }) => {
                           formats={formats}
                           theme="snow"
                           onChange={setContent}
+                          value={content}
                         />
                         <button
+                          data-testid="submitbtn"
                           className="btn btn-lg btn-dark w-100 mt-4"
                           type="submit"
                         >
                           Publish
                         </button>
+
+                        {alertMsg.message && (
+                          <div
+                            className={`alert ${alertMsg.type} mt-4`}
+                            role="alert"
+                          >
+                            {alertMsg.message}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </form>

@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { AppContext } from '../context/state';
 
 const Header = () => {
-  const { user, signOut } = useContext(AppContext);
+  const { user, signOut, category } = useContext(AppContext);
   const Router = useRouter();
 
   return (
@@ -37,19 +37,44 @@ const Header = () => {
                 <Link href="/">
                   <a
                     className={`nav-link ${
-                      Router.pathname === '/' && 'active'
+                      Router?.pathname === '/' && 'active'
                     }`}
                   >
                     <span className="home">Home</span>
                   </a>
                 </Link>
               </li>
+
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Category
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  {category.map((c) => (
+                    <li key={c._id}>
+                      <Link href={`/${c.slug}`}>
+                        <a className="dropdown-item">{c.title}</a>
+                      </Link>
+                    </li>
+                  ))}{' '}
+                  {/* <li>
+                    <hr className="dropdown-divider" />
+                  </li> */}
+                </ul>
+              </li>
+
               {user && (
                 <li className="nav-item ">
                   <Link href="/dashboard">
                     <a
                       className={`nav-link ${
-                        Router.pathname === '/dashboard' && 'active'
+                        Router?.pathname === '/dashboard' && 'active'
                       }`}
                     >
                       Dashboard

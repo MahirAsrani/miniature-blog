@@ -37,14 +37,13 @@ const PostBlock = ({
       </div>
       <div className={`${styles.card_body} px-0 py-3`}>
         <h4 className="card-title">
-          <Link
-            href={`/${categorySlug}/${slug}`}
-            className="btn-link text-reset fw-bold"
-          >
-            {title}
+          <Link href={`/${categorySlug}/${slug}`}>
+            <a data-testid="title" className="btn-link text-reset fw-bold">
+              {title}
+            </a>
           </Link>
         </h4>
-        <p className="card-text">
+        <p className="card-text" data-testid="content">
           {content.length > 30 ? content.substring(0, 100) + '...' : content}
         </p>
 
@@ -57,17 +56,25 @@ const PostBlock = ({
                     className="avatar-img rounded-circle"
                     src={author.image || '/uploads/profile/no_image.jpg'}
                     alt="avatar"
+                    data-testid="author-img"
                   />
                 </div>
                 <span className="ms-2">
-                  <Link href="#" className="stretched-link text-reset btn-link">
-                    <>by {author.name}</>
+                  <Link href="#">
+                    <a
+                      className="stretched-link text-reset btn-link"
+                      data-testid="author-name"
+                    >
+                      by {author.name}
+                    </a>
                   </Link>
                 </span>
               </div>
             </div>
           </li>
-          <li className="nav-item">{date}</li>
+          <li className="nav-item" data-testid="date">
+            {date}
+          </li>
         </ul>
       </div>
     </div>

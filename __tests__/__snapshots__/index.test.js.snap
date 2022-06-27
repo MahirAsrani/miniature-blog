@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders homepage unchanged 1`] = `
+<div>
+  <div
+    class="container py-5"
+  >
+    <div
+      class="row"
+    />
+  </div>
+</div>
+`;

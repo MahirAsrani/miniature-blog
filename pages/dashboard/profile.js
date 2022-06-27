@@ -50,13 +50,14 @@ const Profile = ({ profile }) => {
               <div className="row">
                 <div className="col-md-3 d-flex flex-column">
                   <img
+                    data-testid="profilepic"
                     src={
                       (image && URL.createObjectURL(image)) ||
                       profile.image ||
                       `/uploads/profile/no_image.jpg`
                     }
                     className="rounded-circle mb-3 d-flex mx-auto align-self-center"
-                    style={{ width: '150px;' }}
+                    width="150px;"
                     alt="Avatar"
                   />
                   <input
@@ -68,10 +69,15 @@ const Profile = ({ profile }) => {
                   <div
                     className="btn btn-dark mx-3"
                     onClick={() => img_select.current.click()}
+                    data-testid="upload"
                   >
                     Select Picture
                   </div>
-                  <div className="btn mx-3" onClick={() => setImage(null)}>
+                  <div
+                    className="btn mx-3"
+                    onClick={() => setImage(null)}
+                    data-testid="reset"
+                  >
                     Reset
                   </div>
                 </div>
@@ -80,6 +86,7 @@ const Profile = ({ profile }) => {
                     <label className="form-label">Full Name</label>
                     <input
                       type="text"
+                      data-testid="namefield"
                       className="form-control"
                       placeholder="Your Name"
                       value={name}
@@ -89,6 +96,7 @@ const Profile = ({ profile }) => {
                   <div className="my-3">
                     <input
                       type="email"
+                      data-testid="emailfield"
                       className="form-control"
                       value={profile.email}
                       disabled
@@ -96,7 +104,11 @@ const Profile = ({ profile }) => {
                   </div>
 
                   <div className="my-3">
-                    <button type="submit" className="btn btn-primary mb-3">
+                    <button
+                      type="submit"
+                      className="btn btn-primary mb-3"
+                      data-testid="submitbtn"
+                    >
                       Save Changes
                     </button>
                   </div>

@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostBlock Component renders unchanged 1`] = `
+<div>
+  <div
+    class="col-md-6 col-lg-4"
+  >
+    <div
+      class="position-relative"
+    >
+      <div
+        class="card_img_div"
+        style="background-image: url(./uploads/No_Image.png);"
+      />
+      <div
+        class="card-img-overlay d-flex align-items-start flex-column p-3 graident"
+      >
+        <div
+          class="w-100 mt-auto z5"
+        >
+          <a
+            class="badge bg-warning mb-2"
+            href="/tech"
+          >
+            <i
+              class="fas fa-circle me-2 small fw-bold"
+            />
+            Tech
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card_body px-0 py-3"
+    >
+      <h4
+        class="card-title"
+      >
+        <a
+          class="btn-link text-reset fw-bold"
+          data-testid="title"
+          href="/tech/title"
+        >
+          Title
+        </a>
+      </h4>
+      <p
+        class="card-text"
+        data-testid="content"
+      >
+        content
+      </p>
+      <ul
+        class="nav align-items-center d-flex"
+      >
+        <li
+          class="nav-item"
+        >
+          <div
+            class="nav-link ps-0"
+          >
+            <div
+              class="d-flex align-items-center position-relative"
+            >
+              <div
+                class="avatar"
+              >
+                <img
+                  alt="avatar"
+                  class="avatar-img rounded-circle"
+                  data-testid="author-img"
+                  src="/uploads/profile/no_image.jpg"
+                />
+              </div>
+              <span
+                class="ms-2"
+              >
+                <a
+                  class="stretched-link text-reset btn-link"
+                  data-testid="author-name"
+                  href="/#"
+                >
+                  by 
+                  Person
+                </a>
+              </span>
+            </div>
+          </div>
+        </li>
+        <li
+          class="nav-item"
+          data-testid="date"
+        >
+          Mon Jun 27 2022
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

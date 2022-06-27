@@ -53,7 +53,17 @@ export default async (req, res) => {
       form.parse(req, async (err, fields, files) => {
         if (err) throw err;
         const { title, category, description, content } = fields;
+
         const slug = slugify(title);
+
+        const checkSlug = await Post.findOne({ slug: slug });
+        if (checkSlug)
+          return res
+            .status(200)
+            .json({
+              success: false,
+              message: 'Title already in use, please change the title',
+            });
 
         const newPost = await new Post({
           slug,

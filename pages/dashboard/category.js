@@ -63,12 +63,14 @@ const Category = ({ category = [] }) => {
                   <li
                     className="px-3 list-group-item d-flex justify-content-between align-items-center"
                     key={slug}
+                    data-testid="list_item"
                   >
                     {toggleEdit === _id ? (
                       <>
                         <form
                           className="d-flex w-100 py-2"
                           onSubmit={(e) => handleUpdate(e, _id)}
+                          data-testid="editform"
                         >
                           <div className="col-9">
                             <input
@@ -79,6 +81,7 @@ const Category = ({ category = [] }) => {
                               value={editVal}
                               onChange={(e) => setEditVal(e.target.value)}
                               maxLength={30}
+                              data-testid="inputform"
                             />
                           </div>
 
@@ -86,12 +89,14 @@ const Category = ({ category = [] }) => {
                             <button
                               type="submit"
                               className="btn btn-success ms-2"
+                              data-testid="updatebtn"
                             >
                               Update
                             </button>
                             <button
                               type="button"
                               className="btn btn-dark ms-2"
+                              data-testid="cancelbtn"
                               onClick={() => {
                                 setToggleEdit('');
                                 setEditVal('');
@@ -104,11 +109,12 @@ const Category = ({ category = [] }) => {
                       </>
                     ) : (
                       <>
-                        {title}
+                        <div data-testid="list_title">{title}</div>
                         <div className="d-flex">
                           <button
                             type="button"
                             className="btn btn-warning me-2 d-flex"
+                            data-testid="list_edit_btn"
                             onClick={() => {
                               setToggleEdit(_id);
                               setEditVal(title);
@@ -119,6 +125,7 @@ const Category = ({ category = [] }) => {
                           </button>
                           <button
                             type="button"
+                            data-testid="list_delete_btn"
                             className="btn btn-danger me-2"
                             onClick={() => handleDelete(_id)}
                           >
@@ -142,11 +149,16 @@ const Category = ({ category = [] }) => {
                   value={addNewCat}
                   onChange={(e) => setAddNewCat(e.target.value)}
                   maxLength={30}
+                  data-testid="addcategory_field"
                 />
               </div>
 
               <div className="col-4">
-                <button type="submit" className="btn btn-primary ms-2">
+                <button
+                  type="submit"
+                  className="btn btn-primary ms-2"
+                  data-testid="addCatBtn"
+                >
                   Add Category
                 </button>
               </div>
